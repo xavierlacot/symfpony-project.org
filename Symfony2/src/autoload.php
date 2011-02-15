@@ -9,6 +9,7 @@ $loader->registerNamespaces(array(
     'Symfony'                    => __DIR__.'/vendor/symfony/src',
     'Application'                => __DIR__,
     'Bundle'                     => __DIR__,
+    'CleverAge'                  => __DIR__,
     'Doctrine\\Common'           => __DIR__.'/vendor/symfony/vendor/doctrine-common/lib',
     'Doctrine\\DBAL\\Migrations' => __DIR__.'/vendor/symfony/vendor/doctrine-migrations/lib',
     'Doctrine\\ODM\\MongoDB'     => __DIR__.'/vendor/symfony/vendor/doctrine-mongodb/lib',

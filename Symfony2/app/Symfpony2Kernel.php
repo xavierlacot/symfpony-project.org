@@ -22,6 +22,7 @@ class Symfpony2Kernel extends Kernel
             //new Symfony\Bundle\PropelBundle\PropelBundle(),
 
             // register your bundles
+            new CleverAge\SymfponyBundle\CleverAgeSymfponyBundle(),
         );
 
         if ($this->isDebug()) {
