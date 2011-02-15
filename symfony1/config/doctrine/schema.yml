@@ -1,0 +1,8 @@
+Pony:
+  columns:
+    name:
+      type: string(255)
+    picture_url:
+      type: string(255)
+    description:
+      type: text

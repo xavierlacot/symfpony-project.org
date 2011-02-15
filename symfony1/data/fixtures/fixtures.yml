@@ -1,17 +1,68 @@
-# # Populate this file with data to be loaded by your ORM's *:data-load task.
-# # You can create multiple files in this directory (i.e. 010_users.yml,
-# # 020_articles.yml, etc) which will be loaded in alphabetical order.
-# # 
-# # See documentation for your ORM's *:data-load task for more information.
-# 
-# User:
-#   fabien:
-#     username: fabien
-#     password: changeme
-#     name:     Fabien Potencier
-#     email:    fabien.potencier@symfony-project.com
-#   kris:
-#     username: Kris.Wallsmith
-#     password: changeme
-#     name:     Kris Wallsmith
-#     email:    kris.wallsmith@symfony-project.com
+Pony:
+  p1:
+    name: Connemarra
+    picture_url: http://www.feracheval.com/nvxsite/connemarra.jpg
+    description: |
+      Le Connemara situé sur la côte Ouest de l'Irlande, est la région qui a donné son nom au poney Connemara. L'origine de la race est obscure, l'existence de chevaux dans cette région remonte au 4ème siècle avant notre ère.
+      Taille : de 128 cm à 148 cm
+      Robes : gris, noir, bai, brun, isabelle, rouan, alezan, palomino - Robes non admises : pie, crème aux yeux bleus.
+  p2:
+    name: Dartmoor
+    picture_url: http://www.feracheval.com/nvxsite/dartmoor.jpg
+    description: |
+      Il est originaire d'un plateau aride du sud de l'Angleterre qui lui a donné son nom et  sa remarquable rusticité.
+      Taille maximum : 1,27 m au garrot. Robe : Bai brun, bai gris, alezan quelquefois rouan. Toutes les robes sont admises sauf pie. Les marques blanches sont tolérées en très petit nombre.
+  p3:
+    name: Fjord
+    picture_url: http://www.feracheval.com/nvxsite/fjord.jpg
+    description: |
+      Le cheval FJORD est une race norvégienne stabilisée depuis plus d'un siècle et élevée principalement en race pure.
+      Le Fjord est à l'origine un petit cheval de montagne relativement trapu. La sélection a favorisé les individus de plus grande taille aux allures souples et étendues et dont le type montre une certaine distinction. La moyenne des tailles atteint 1,45 m.
+  p4:
+    name: Haflinger
+    picture_url: http://www.feracheval.com/nvxsite/haflinger2.jpg
+    description: |
+      En 1874, près de Hafling, village autrichien, naît un poulain, fils d'un étalon arabe et d'une jument autochtone. Ce poulain FOLIE, plût à l'empereur François-Joseph et devint le premier étalon de la race.
+      Toujours alezan crins lavés, le Haflinger est un poney D, avec une taille idéale entre 144 et 149 cm. La tête est courte, sèche avec un chanfrein légèrement concave, l'oeil est vif, les oreilles petites et mobiles.
+  p5:
+    name: Highland
+    picture_url: http://www.feracheval.com/nvxsite/highland.jpg
+    description: |
+      L'histoire du Poney Highland est étroitement liée à celle de l'Ecosse. L'origine de la race se perd dans la nuit des temps. Les premiers Poneys Highland furent importés en France en 1969.
+      Taille maximum : 1,48 m au garot Robe : elle va de toutes les nuances de gris (y compris le souris), d'isabelle jusqu'au bai et parfois noir. Toutes les robes sont admises sauf pie.
+  p6:
+    name: New Forest
+    picture_url: http://www.feracheval.com/nvxsite/newforest.jpg
+    description: |
+      Le poney New-Forest a pour berceau le Sud de la Grande-Bretagne, région dont il porte le nom "Nouvelle Forêt", plantée par Guillaume le Conquérant en 1066. On y distingue les poneys d'élevage (stud), et les poneys de la forêt (forest), vivant en liberté dans les landes, taillis et marais, où ils ont acquis leurs qualité de rusticité et de robustesse.
+      Poney robuste et élégant, avec une bonne charpente sans être lourd ; la tête est distinguée, le front large et plat, l'encolure bien greffée, on la préfère plus longue et moins épaisse ; l'épaule doit être bien orientée, longue et oblique ; le dos soutenu ; un corps profond ; une arrière-main solide avec des membres droits aux articulations marquées. La taille varie de 1m20 à 1m48, la plupart des poneys sont de taille C et D. Toutes les robes sont permises sauf le pie et le crème aux yeux bleus.
+  p7:
+    name: Poney Français de selle
+    picture_url: http://www.feracheval.com/nvxsite/francaisdeselle.jpg
+    description: |
+      Le poney Français de selle est le résultat du croisement entre certaines ponettes d'origine française, inscrites au livre généalogique français des races de poneys, avec notamment des étalons Arabes ou de race de poneys telles que le Connemara, le New forest et le Welsh.
+      De taille variant entre 1.25m à 1.48 m, le poney français de selle est un véritable petit cheval de selle alliant la rusticité du poney et les allures du cheval.
+  p8:
+    name: Poney Landais
+    picture_url: http://www.feracheval.com/nvxsite/landais.jpg
+    description: |
+      Le poney Landais est une race très ancienne qui descend probablement du Tarpan des steppes, plus récemment influencée par des apports arabes ou anglais (invasions successives).
+      Ce poney est harmonieux, avec une tête large au niveau des yeux, fine, sèche, une encolure bien orientée, l'épaule oblique, le poitrail ouvert ; le dos est porteur, la croupe simple, et les membres secs. Queue et crinière sont bien fournies. Les robes admises sont : bai, noir, alezan et chocolat. Balezanes et marques en tête sont autorisées.
+  p9:
+    name: Pottok
+    picture_url: http://www.feracheval.com/nvxsite/pottok.jpg
+    description: |
+      Installé depuis des millénaires au Pays Basque, les Pottoks ont une morphologie proche du cheval de Préwalsky et on retrouve leur profil sur les dessins des parois des grottes préhistoriques d'Isturitz et d'Oxocelhaya.
+      C'est un cheval à la robe noire, baie ou baie brune, alezane ou pie. Le Pottok a une taille variant entre 1,15 et 1,47 m.
+  p10:
+    name: Shetland
+    picture_url: http://www.feracheval.com/nvxsite/shetland.jpg
+    description: |
+      Le Shetland broute l'herbe des îles sauvages, balayées par les vents au large de l'Ecosse, probablement depuis l'ère glaciaire. Les premières preuves de sa présence sur les îles Shetland, remontent à l'âge de bronze. L'influence du sang arabe serait essentiellement contemporaine des premières croisades.
+      La rudesse du climat, la nourriture précaire, l'isolement insulaire ont fixé la taille réduite du poney Shetland, stabilisée aujourd'hui à 107 cm maximum, à l'âge de 4 ans. La tête est bien ciselée, d'expression intelligente, le front est large ; les petites oreilles bien placées sont portées haut ; les naseaux sont larges et bien ouverts.
+  p11:
+    name: Welsh
+    picture_url: http://www.feracheval.com/nvxsite/welsh.jpg
+    description: |
+      Les poneys WELSH sont des poneys anglais originaires du Pays de Galles (WALES) dont on retrouve des traces très anciennes dans l'histoire, depuis Jules César.
+      Toutes les robes, exceptées les pies, sont admises pour les poneys et les cobs Welsh. Poney Welsh Mountain, section A : Taille : ne dépassant pas 1,22m. Il a des membres de fer et une grande intelligence.
