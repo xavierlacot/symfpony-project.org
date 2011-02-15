@@ -1,7 +1,7 @@
 imports:
     - { resource: dist.yml }
 
-app.config:
+framework:
     charset:       UTF-8
     error_handler: null
     csrf_protection:
@@ -16,11 +16,13 @@ app.config:
         auto_start:     true
 
 # Twig Configuration
-twig.config:
+twig:
     debug:            %kernel.debug%
     strict_variables: %kernel.debug%
 
-#doctrine.orm:
-#    auto_generate_proxy_classes: %kernel.debug%
-#    mappings:
-#        HelloBundle: ~
+doctrine:
+    orm:
+        default_entity_manager:   default
+        auto_generate_proxy_classes: %kernel.debug%
+        mappings:
+            CleverAgeSymfponyBundle:  { type: annotation }

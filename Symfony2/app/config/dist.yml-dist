@@ -1,10 +1,11 @@
 ## Doctrine Configuration
-doctrine.dbal:
-    driver:   @dist.doctrine.dbal.driver@
-    dbname:   @dist.doctrine.dbal.dbname@
-    user:     @dist.doctrine.dbal.user@
-    password: @dist.doctrine.dbal.password@
-#    logging:  %kernel.debug%
+doctrine:
+    dbal:
+        driver:   @dist.doctrine.dbal.driver@
+        dbname:   @dist.doctrine.dbal.dbname@
+        user:     @dist.doctrine.dbal.user@
+        password: @dist.doctrine.dbal.password@
+    #    logging:  %kernel.debug%
 
 ## Swiftmailer Configuration
 #swiftmailer.config:
