@@ -1,3 +1,4 @@
 symfony1/cache/
 symfony1/log/
 Symfony2/app/cache/
+Symfony2/app/logs/
