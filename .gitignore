@@ -4,6 +4,9 @@ symfony1/web/uploads/*
 symfony1/config/databases.yml
 symfony1/config/propel.ini
 symfony1/data/sql
+symfony1/lib/filter/doctrine/base/Base*
+symfony1/lib/form/doctrine/base/Base*
+symfony1/lib/model/doctrine/base/Base*
 
 Symfony2/app/cache/
 Symfony2/app/logs/
