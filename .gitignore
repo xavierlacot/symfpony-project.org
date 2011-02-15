@@ -1,4 +1,10 @@
-symfony1/cache/
-symfony1/log/
+symfony1/cache/*
+symfony1/log/*
+symfony1/web/uploads/*
+symfony1/config/databases.yml
+symfony1/config/propel.ini
+symfony1/data/sql
+
 Symfony2/app/cache/
 Symfony2/app/logs/
+
