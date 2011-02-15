@@ -9,5 +9,5 @@ symfony1/lib/form/doctrine/base/Base*
 symfony1/lib/model/doctrine/base/Base*
 
 Symfony2/app/cache/
+Symfony2/app/config/dist.yml
 Symfony2/app/logs/
-
