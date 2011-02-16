@@ -1,12 +1,11 @@
 <?php
-
 namespace CleverAge\SymfponyBundle\Entity;
 
 /**
  * @orm:Table(name="pony")
  * @orm:Entity
  */
-class Pony
+class Pony implements \Symfony\Component\Serializer\Normalizer\NormalizableInterface
 {
     /**
      * @var integer $id
@@ -106,5 +105,28 @@ class Pony
     public function getDescription()
     {
         return $this->description;
+    }
+
+    /**
+     * @see \Symfony\Component\Serializer\Normalizer\NormalizableInterface
+     */
+    function normalize(\Symfony\Component\Serializer\Normalizer\NormalizerInterface $normalizer, $format, $properties = null)
+    {
+        $return = array(
+            'name' => $this->name,
+            'description' => $this->description,
+            'picture_url' => $this->picture_url,
+        );
+        return $return;
+    }
+
+    /**
+     * @see \Symfony\Component\Serializer\Normalizer\NormalizableInterface
+     */
+    function denormalize(\Symfony\Component\Serializer\Normalizer\NormalizerInterface $normalizer, $data, $format = null)
+    {
+        $this->setName($data['name']);
+        $this->setDescription($data['description']);
+        $this->setPictureUrl($data['picture_url']);
     }
 }
