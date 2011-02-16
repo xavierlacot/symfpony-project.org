@@ -1,7 +1,8 @@
 homepage:
-    pattern:  /
-    defaults: { _controller: FrameworkBundle:Default:index }
+    pattern:      /
+    defaults:     { _controller: FrameworkBundle:Default:index }
 
 pony_list:
-    pattern:  /pony
-    defaults: { _controller: CleverAgeSymfponyBundle:Default:index }
+    pattern:      /pony.{_format}
+    defaults:     { _controller: CleverAgeSymfponyBundle:Default:index, _format: xml }
+    requirements: { _format: (xml|json) }
