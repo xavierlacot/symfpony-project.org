@@ -15,14 +15,14 @@ class Pony
      * @orm:Id
      * @orm:GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string $name
      *
      * @orm:Column(name="name", type="string", length=110)
      */
-    private $name;
+    protected $name;
 
     /**
      * @var string $picture_url
@@ -37,4 +37,74 @@ class Pony
      * @orm:Column(type="text")
      */
     protected $description;
+
+    /**
+     * Get id
+     *
+     * @return integer $id
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string $name
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set picture_url
+     *
+     * @param string $pictureUrl
+     */
+    public function setPictureUrl($pictureUrl)
+    {
+        $this->picture_url = $pictureUrl;
+    }
+
+    /**
+     * Get picture_url
+     *
+     * @return string $pictureUrl
+     */
+    public function getPictureUrl()
+    {
+        return $this->picture_url;
+    }
+
+    /**
+     * Set description
+     *
+     * @param text $description
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    }
+
+    /**
+     * Get description
+     *
+     * @return text $description
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
 }
