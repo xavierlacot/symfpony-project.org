@@ -6,3 +6,8 @@ Pony:
       type: string(255)
     description:
       type: text
+  actAs:
+    Sluggable:
+      unique: true
+      fields: [name]
+      canUpdate: false
