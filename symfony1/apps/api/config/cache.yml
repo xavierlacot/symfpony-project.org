@@ -2,6 +2,6 @@
 # http://www.symfony-project.org/reference/1_4/en/09-Cache
 
 default:
-  enabled:     false
-  with_layout: false
+  enabled:     true
+  with_layout: true
   lifetime:    86400
