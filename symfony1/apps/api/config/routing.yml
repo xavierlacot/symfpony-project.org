@@ -6,11 +6,22 @@ homepage:
   url:   /
   param: { module: default, action: index }
 
-# generic rules
-# please, remove them by adding more specific rules
-default_index:
-  url:   /:module
-  param: { action: index }
+pony_list:
+  url: /pony.:sf_format
+  param: { module: pony, action: index, sf_format: xml }
+  class: sfRequestRoute
+  requirements: { sf_method: GET }
 
-default:
-  url:   /:module/:action/*
+pony_show:
+  url: /pony/:slug.:sf_format
+  param: { module: pony, action: show, sf_format: xml }
+  class: sfDoctrineRoute
+  options: { model: Pony, column: slug, type: object }
+  requirements: { sf_method: GET }
+
+pony_delete:
+  url: /pony/:id
+  param: { module: pony, action: delete, sf_format: xml }
+  class: sfDoctrineRoute
+  options: { model: Pony, column: slug, type: object }
+  requirements: { sf_method: DELETE }
