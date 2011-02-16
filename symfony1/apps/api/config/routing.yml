@@ -20,7 +20,7 @@ pony_show:
   requirements: { sf_method: GET }
 
 pony_delete:
-  url: /pony/:id
+  url: /pony/:slug.:sf_format
   param: { module: pony, action: delete, sf_format: xml }
   class: sfDoctrineRoute
   options: { model: Pony, column: slug, type: object }

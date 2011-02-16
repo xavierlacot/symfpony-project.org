@@ -14,12 +14,15 @@ class ponyActions extends sfActions
   public $model = 'Pony';
   
   /**
-   * Retrieves a  collection of Layout objects
+   * Retrieves a  collection of Pony
    * @param   sfWebRequest   $request a request object
    * @return  string
    */
   public function executeIndex(sfWebRequest $request)
   {
+    $format = $request->getParameter('sf_format');
+    $this->getResponse()->setContentType($format);
+    
     try
     {
       $params = $this->validate($request->getGetParameters(), $this->getIndexValidators());
@@ -27,12 +30,63 @@ class ponyActions extends sfActions
     catch (Exception $e)
     {
       $this->getResponse()->setStatusCode(406);
-      $this->getResponse()->setContent('todo');
+      $this->getResponse()->setContent(
+              Doctrine_Parser::dump(array('message' => $e->getMessage()), $format)
+      );
       return sfView::NONE;
     }
 
+    $this->getResponse()->setContent(
+            $this->query($params)->execute()->exportTo($format)
+    );
+
+    return sfView::NONE;
+  }
+
+  /**
+   * Retrieve a single Pony from the collection
+   * @param sfWebRequest $request
+   */
+  public function executeShow(sfWebRequest $request)
+  {
+    $pony   = $this->getRoute()->getObject();
+    $format = $request->getParameter('sf_format');
     
-    var_dump( $this->query($params)->execute() );
+    $this->getResponse()->setContentType($format);
+    
+    $this->getResponse()->setContent(
+            Doctrine_Parser::dump($pony->toArray(true, true), $format)
+    );
+
+    return sfView::NONE;
+  }
+
+  /**
+   * Retrieve a single Pony from the collection
+   * @param sfWebRequest $request
+   */
+  public function executeDelete(sfWebRequest $request)
+  {
+    $pony   = $this->getRoute()->getObject();
+    $format = $request->getParameter('sf_format');
+
+    $this->getResponse()->setContentType($format);
+
+    if ($pony->delete())
+    {
+      $this->getResponse()->setContent(
+              Doctrine_Parser::dump(array('message' => 'Goodbye my little pony, hope you are in a better place now :('), $format)
+      );
+    }
+    else
+    {
+      $this->getResponse()->setStatusCode(500);
+      $this->getResponse()->setContent(
+              Doctrine_Parser::dump(array('message' => 'You CANT kill mister PONY HAHAHAHAHA!'), $format)
+      );
+    }
+
+    return sfView::NONE;
   }
 
   /**
