@@ -1,11 +1,13 @@
 <?php
 namespace CleverAge\SymfponyBundle\Entity;
+use Symfony\Component\Serializer\Normalizer\NormalizableInterface;
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 /**
  * @orm:Table(name="pony")
  * @orm:Entity
  */
-class Pony implements \Symfony\Component\Serializer\Normalizer\NormalizableInterface
+class Pony implements NormalizableInterface
 {
     /**
      * @var integer $id
@@ -110,7 +112,7 @@ class Pony implements \Symfony\Component\Serializer\Normalizer\NormalizableInter
     /**
      * @see \Symfony\Component\Serializer\Normalizer\NormalizableInterface
      */
-    function normalize(\Symfony\Component\Serializer\Normalizer\NormalizerInterface $normalizer, $format, $properties = null)
+    function normalize(NormalizerInterface $normalizer, $format, $properties = null)
     {
         $return = array(
             'name' => $this->name,
@@ -123,7 +125,7 @@ class Pony implements \Symfony\Component\Serializer\Normalizer\NormalizableInter
     /**
      * @see \Symfony\Component\Serializer\Normalizer\NormalizableInterface
      */
-    function denormalize(\Symfony\Component\Serializer\Normalizer\NormalizerInterface $normalizer, $data, $format = null)
+    function denormalize(NormalizerInterface $normalizer, $data, $format = null)
     {
         $this->setName($data['name']);
         $this->setDescription($data['description']);
