@@ -6,22 +6,29 @@ homepage:
   url:   /
   param: { module: default, action: index }
 
-pony_list:
-  url: /pony.:sf_format
-  param: { module: pony, action: index, sf_format: xml }
-  class: sfRequestRoute
-  requirements: { sf_method: GET, sf_format: (xml|json|yml) }
-
-pony_show:
-  url: /pony/:slug.:sf_format
-  param: { module: pony, action: show, sf_format: xml }
-  class: sfDoctrineRoute
-  options: { model: Pony, column: slug, type: object }
-  requirements: { sf_method: GET, sf_format: (xml|json|yml) }
-
-pony_delete:
-  url: /pony/:slug.:sf_format
-  param: { module: pony, action: delete, sf_format: xml }
-  class: sfDoctrineRoute
-  options: { model: Pony, column: slug, type: object }
-  requirements: { sf_method: DELETE, sf_format: (xml|json|yml) }
+pony:
+  class: sfDoctrineRouteCollection
+  options:
+    model: Pony
+    module: pony
+    requirements: { sf_format: (xml|json|yml) }
+#
+#pony_list:
+#  url: /pony.:sf_format
+#  param: { module: pony, action: index, sf_format: xml }
+#  class: sfRequestRoute
+#  requirements: { sf_method: GET, sf_format: (xml|json|yml) }
+#
+#pony_show:
+#  url: /pony/:slug.:sf_format
+#  param: { module: pony, action: show, sf_format: xml }
+#  class: sfDoctrineRoute
+#  options: { model: Pony, column: slug, type: object }
+#  requirements: { sf_method: GET, sf_format: (xml|json|yml) }
+#
+#pony_delete:
+#  url: /pony/:slug.:sf_format
+#  param: { module: pony, action: delete, sf_format: xml }
+#  class: sfDoctrineRoute
+#  options: { model: Pony, column: slug, type: object }
+#  requirements: { sf_method: DELETE, sf_format: (xml|json|yml) }
