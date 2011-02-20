@@ -1,0 +1,4 @@
+pony_list:
+    pattern:      /pony.{_format}
+    defaults:     { _controller: CleverAgeSymfponyBundle:Default:index, _format: xml }
+    requirements: { _format: (xml|json) }
