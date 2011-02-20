@@ -8,24 +8,7 @@ pony_show:
     defaults:     { _controller: CleverAgeSymfponyBundle:Default:show, _format: xml }
     requirements: { _format: (xml|json), _method: GET, slug: "[a-z0-9-]+" }
 
-
-#
-#pony_list:
-#  url: /pony.:sf_format
-#  param: { module: pony, action: index, sf_format: xml }
-#  class: sfRequestRoute
-#  requirements: { sf_method: GET, sf_format: (xml|json|yml) }
-#
-#pony_show:
-#  url: /pony/:slug.:sf_format
-#  param: { module: pony, action: show, sf_format: xml }
-#  class: sfDoctrineRoute
-#  options: { model: Pony, column: slug, type: object }
-#  requirements: { sf_method: GET, sf_format: (xml|json|yml) }
-#
-#pony_delete:
-#  url: /pony/:slug.:sf_format
-#  param: { module: pony, action: delete, sf_format: xml }
-#  class: sfDoctrineRoute
-#  options: { model: Pony, column: slug, type: object }
-#  requirements: { sf_method: DELETE, sf_format: (xml|json|yml) }
+pony_delete:
+    pattern:      /pony/{slug}.{_format}
+    defaults:     { _controller: CleverAgeSymfponyBundle:Default:delete, _format: xml }
+    requirements: { _format: (xml|json), _method: DELETE, slug: "[a-z0-9-]+" }

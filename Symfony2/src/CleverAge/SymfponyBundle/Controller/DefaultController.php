@@ -51,4 +51,18 @@ class DefaultController extends Controller
           die('todo');
         }
     }
+
+    public function deleteAction($slug, $_format)
+    {
+        $pony = $this->getRessource($slug);
+
+        if ($pony)
+        {
+          die('todo');
+        }
+        else
+        {
+          die('todo');
+        }
+    }
 }
