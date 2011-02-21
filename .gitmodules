@@ -10,3 +10,6 @@
 [submodule "Symfony2/src/Stof/DoctrineExtensionsBundle"]
 	path = Symfony2/src/Stof/DoctrineExtensionsBundle
 	url = git://github.com/stof/DoctrineExtensionsBundle.git
+[submodule "Symfony2/src/Sensio/FrameworkExtraBundle"]
+	path = Symfony2/src/Sensio/FrameworkExtraBundle
+	url = git://github.com/sensio/FrameworkExtraBundle.git
