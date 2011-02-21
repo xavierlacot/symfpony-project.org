@@ -5,6 +5,8 @@ namespace CleverAge\SymfponyBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 
+use CleverAge\SymfponyBundle\Entity\Pony;
+
 class DefaultController extends Controller
 {
     /**
@@ -50,11 +52,11 @@ class DefaultController extends Controller
     /**
      * Thx to FrameworkExtraBundle,
      * the Pony is automaticaly fetched by the ParamConverter.
-     * @param \CleverAge\SymfponyBundle\Entity\Pony $pony
+     * @param Pony $pony
      * @param string $_format
      * @return Response
      */
-    public function showAction(\CleverAge\SymfponyBundle\Entity\Pony $pony, $_format)
+    public function showAction(Pony $pony, $_format)
     {
         if ($pony)
         {
