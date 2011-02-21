@@ -3,6 +3,7 @@
 namespace CleverAge\SymfponyBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Response;
 
 class DefaultController extends Controller
 {
@@ -43,7 +44,7 @@ class DefaultController extends Controller
             $serializer->setEncoder('xml', $xmlEncoder);
         }
 
-        return $this->createResponse($serializer->encode($ponies, $_format), 200, array());
+        return new Response($serializer->encode($ponies, $_format), 200, array());
     }
 
     public function showAction($slug, $_format)
@@ -57,7 +58,7 @@ class DefaultController extends Controller
           $serializer->setEncoder('json', new \Symfony\Component\Serializer\Encoder\JsonEncoder());
           $serializer->setEncoder('xml', new \Symfony\Component\Serializer\Encoder\XmlEncoder());
 
-          return $this->createResponse($serializer->encode($pony, $_format), 200, array());
+          return new Response($serializer->encode($pony, $_format), 200, array());
         }
         else
         {
