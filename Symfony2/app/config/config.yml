@@ -15,12 +15,12 @@ framework:
         lifetime:       3600
         auto_start:     true
 
-# FrameworkExtraBundle
-extra.config:
-    router:  { annotations: false }
-    request: { converters: true }
-    view:    { annotations: false, manage_null_arguments: false }
-    cache:   { annotations: false }
+## FrameworkExtraBundle
+#extra:
+#    router:  { annotations: false }
+#    request: { converters: true }
+#    view:    { annotations: false, manage_null_arguments: false }
+#    cache:   { annotations: false }
 
 # Twig Configuration
 #twig:

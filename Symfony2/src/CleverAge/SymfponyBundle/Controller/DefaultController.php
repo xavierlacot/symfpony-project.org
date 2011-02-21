@@ -47,10 +47,15 @@ class DefaultController extends Controller
         return new Response($serializer->encode($ponies, $_format), 200, array());
     }
 
-    public function showAction($slug, $_format)
+    /**
+     * Thx to FrameworkExtraBundle,
+     * the Pony is automaticaly fetched by the ParamConverter.
+     * @param \CleverAge\SymfponyBundle\Entity\Pony $pony
+     * @param string $_format
+     * @return Response
+     */
+    public function showAction(\CleverAge\SymfponyBundle\Entity\Pony $pony, $_format)
     {
-        $pony = $this->getRessource($slug);
-
         if ($pony)
         {
           $serializer = new \Symfony\Component\Serializer\Serializer();
