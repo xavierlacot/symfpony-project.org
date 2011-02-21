@@ -10,13 +10,26 @@ class DefaultController extends Controller
     {
         $em = $this->get('doctrine.orm.entity_manager');
         $query = $em->createQuery('select p from CleverAgeSymfponyBundle:Pony p');
-        $ponys = $query->execute();
+        $ponies = $query->execute();
 
+        // create serializer
         $serializer = new \Symfony\Component\Serializer\Serializer();
         $serializer->addNormalizer(new \Symfony\Component\Serializer\Normalizer\CustomNormalizer());
-        $serializer->setEncoder('json', new \Symfony\Component\Serializer\Encoder\JsonEncoder());
-        $serializer->setEncoder('xml', new \Symfony\Component\Serializer\Encoder\XmlEncoder());
 
-        return $this->createResponse($serializer->encode($ponys, $_format), 200, array());
+        if ('json' == $_format)
+        {
+            // add json encoder
+            $serializer->setEncoder('json', new \Symfony\Component\Serializer\Encoder\JsonEncoder());
+        }
+        elseif ('xml' == $_format)
+        {
+            // add xml encoder
+            $xmlEncoder = new \CleverAge\SymfponyBundle\Serializer\Encoder\XmlEncoder();
+            $xmlEncoder->setRootNodeName('Ponies');
+            $xmlEncoder->setItemNodeName('Pony');
+            $serializer->setEncoder('xml', $xmlEncoder);
+        }
+
+        return $this->createResponse($serializer->encode($ponies, $_format), 200, array());
     }
 }
