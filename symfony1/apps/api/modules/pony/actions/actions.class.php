@@ -21,9 +21,8 @@ class ponyActions extends sfActions
   public function executeDelete(sfWebRequest $request)
   {
     $pony   = $this->getRoute()->getObject();
-    $format = $request->getParameter('sf_format');
-
-    $this->getResponse()->setContentType($format);
+    $format = $request->getRequestFormat();
+    $this->getResponse()->setContentType( $request->getMimeType($format) );
 
     if ($pony->delete())
     {
@@ -50,8 +49,8 @@ class ponyActions extends sfActions
    */
   public function executeIndex(sfWebRequest $request)
   {
-    $format = $request->getParameter('sf_format');
-    $this->getResponse()->setContentType($format);
+    $format = $request->getRequestFormat();
+    $this->getResponse()->setContentType( $request->getMimeType($format) );
 
     try
     {
@@ -81,9 +80,9 @@ class ponyActions extends sfActions
   public function executeShow(sfWebRequest $request)
   {
     $pony   = $this->getRoute()->getObject();
-    $format = $request->getParameter('sf_format');
+    $format = $request->getRequestFormat();
 
-    $this->getResponse()->setContentType($format);
+    $this->getResponse()->setContentType( $request->getMimeType($format) );
 
     $this->getResponse()->setContent(
      Doctrine_Parser::dump($pony->toArray(true, true), $format)

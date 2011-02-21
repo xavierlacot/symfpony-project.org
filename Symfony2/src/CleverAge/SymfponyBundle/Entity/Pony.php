@@ -27,6 +27,13 @@ class Pony implements NormalizableInterface
     protected $name;
 
     /**
+     * @var string $slug
+     *
+     * @orm:Column(name="slug", type="string", length=110)
+     */
+    protected $slug;
+
+    /**
      * @var string $picture_url
      *
      * @orm:Column(type="string", length="255")
@@ -85,12 +92,33 @@ class Pony implements NormalizableInterface
 
     /**
      * Set name
-     *
+     * 
      * @param string $name
      */
     public function setName($name)
     {
         $this->name = $name;
+
+        if ($this->slug == null)
+        {
+          $this->slug = $this->generateSlug($name);
+        }
+    }
+
+    /**
+     * Generate a slug string from a name string
+     * @todo  The slug MUST be unique
+     * @param string $name
+     * @return string
+     */
+    private function generateSlug($name)
+    {
+        $string = html_entity_decode($name, ENT_QUOTES, 'UTF-8');
+        $string = strip_tags($string);
+        $string = trim(preg_replace("#[^a-zA-Z0-9 '/-]#", "", $string));
+        $string = str_replace(array(' ', '/', '\''), '-', $string);
+        $string = preg_replace('#-+#', '-', $string);
+        return strtolower($string);;
     }
 
     /**
@@ -101,6 +129,16 @@ class Pony implements NormalizableInterface
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string $slug
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 
     /**
