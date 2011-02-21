@@ -18,8 +18,9 @@ $loader->registerNamespaces(array(
     'Doctrine\\DBAL'                  => __DIR__.'/vendor/symfony/vendor/doctrine-dbal/lib',
     'Doctrine'                        => __DIR__.'/vendor/symfony/vendor/doctrine/lib',
     'Gedmo'                           => __DIR__.'/vendor/doctrine-extensions/lib',
-    'Stof'                            => __DIR__,
     'Zend'                            => __DIR__.'/vendor/symfony/vendor/zend/library',
+    'Stof'                            => __DIR__,
+    'Sensio'                  => __DIR__,
 ));
 $loader->registerPrefixes(array(
     'Swift_' => __DIR__.'/vendor/symfony/vendor/swiftmailer/lib/classes',

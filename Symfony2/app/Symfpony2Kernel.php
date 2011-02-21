@@ -24,6 +24,7 @@ class Symfpony2Kernel extends Kernel
             // register your bundles
             new CleverAge\SymfponyBundle\CleverAgeSymfponyBundle(),
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
+            new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
         );
 
         if ($this->isDebug()) {
