@@ -9,7 +9,7 @@ framework:
         secret: xxxxxxxxxx
     router:        { resource: "%kernel.root_dir%/config/routing.yml" }
     validation:    { enabled: true, annotations: true }
-    templating:    { engines: ['twig'] } #assets_version: SomeVersionScheme
+    templating:    { engines: ['php'] } #assets_version: SomeVersionScheme
     session:
         default_locale: en
         lifetime:       3600
