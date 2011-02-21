@@ -21,6 +21,7 @@ class Pony implements NormalizableInterface
     /**
      * @var string $name
      *
+     * @gedmo:Sluggable
      * @orm:Column(name="name", type="string", length=110)
      */
     protected $name;
@@ -38,6 +39,39 @@ class Pony implements NormalizableInterface
      * @orm:Column(type="text")
      */
     protected $description;
+
+    /**
+     * @var string $slug
+     *
+     * @gedmo:Slug
+     * @orm:Column(name="slug", type="string", length=128, unique=true)
+     */
+    protected $slug;
+
+    /**
+     * @see \Symfony\Component\Serializer\Normalizer\NormalizableInterface
+     */
+    function normalize(NormalizerInterface $normalizer, $format, $properties = null)
+    {
+        $return = array(
+            'name' => $this->name,
+            'picture_url' => $this->picture_url,
+            'description' => $this->description,
+            'slug' => $this->slug,
+        );
+        return $return;
+    }
+
+    /**
+     * @see \Symfony\Component\Serializer\Normalizer\NormalizableInterface
+     */
+    function denormalize(NormalizerInterface $normalizer, $data, $format = null)
+    {
+        $this->setName($data['name']);
+        $this->setDescription($data['description']);
+        $this->setPictureUrl($data['picture_url']);
+    }
+
 
     /**
      * Get id
@@ -110,25 +144,22 @@ class Pony implements NormalizableInterface
     }
 
     /**
-     * @see \Symfony\Component\Serializer\Normalizer\NormalizableInterface
+     * Set slug
+     *
+     * @param string $slug
      */
-    function normalize(NormalizerInterface $normalizer, $format, $properties = null)
+    public function setSlug($slug)
     {
-        $return = array(
-            'name' => $this->name,
-            'description' => $this->description,
-            'picture_url' => $this->picture_url,
-        );
-        return $return;
+        $this->slug = $slug;
     }
 
     /**
-     * @see \Symfony\Component\Serializer\Normalizer\NormalizableInterface
+     * Get slug
+     *
+     * @return string $slug
      */
-    function denormalize(NormalizerInterface $normalizer, $data, $format = null)
+    public function getSlug()
     {
-        $this->setName($data['name']);
-        $this->setDescription($data['description']);
-        $this->setPictureUrl($data['picture_url']);
+        return $this->slug;
     }
 }
