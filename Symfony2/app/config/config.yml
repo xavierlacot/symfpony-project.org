@@ -16,9 +16,9 @@ framework:
         auto_start:     true
 
 # Twig Configuration
-twig:
-    debug:            %kernel.debug%
-    strict_variables: %kernel.debug%
+#twig:
+#    debug:            %kernel.debug%
+#    strict_variables: %kernel.debug%
 
 doctrine:
     orm:
@@ -26,3 +26,12 @@ doctrine:
         auto_generate_proxy_classes: %kernel.debug%
         mappings:
             CleverAgeSymfponyBundle:  { type: annotation }
+
+# doctrine extensions configuration
+stof_doctrine_extensions:
+    orm:
+        default:
+            # only enable sluggable listener
+            tree: false
+            timestampable: false
+            translatable: false
