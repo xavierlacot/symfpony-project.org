@@ -11,7 +11,7 @@ class Symfpony2Kernel extends Kernel
     {
         $bundles = array(
             new Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
-#            new Symfony\Bundle\TwigBundle\TwigBundle(),
+            new Symfony\Bundle\TwigBundle\TwigBundle(),
 
             // enable third-party bundles
             new Symfony\Bundle\ZendBundle\ZendBundle(),
