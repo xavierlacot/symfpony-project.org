@@ -17,6 +17,8 @@ $loader->registerNamespaces(array(
     'Doctrine\\ODM\\MongoDB'          => __DIR__.'/vendor/symfony/vendor/doctrine-mongodb/lib',
     'Doctrine\\DBAL'                  => __DIR__.'/vendor/symfony/vendor/doctrine-dbal/lib',
     'Doctrine'                        => __DIR__.'/vendor/symfony/vendor/doctrine/lib',
+    'Gedmo'                           => __DIR__.'/vendor/doctrine-extensions/lib',
+    'Stof'                            => __DIR__,
     'Zend'                            => __DIR__.'/vendor/symfony/vendor/zend/library',
 ));
 $loader->registerPrefixes(array(
