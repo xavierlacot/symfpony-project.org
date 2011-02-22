@@ -53,17 +53,16 @@ class Pony implements NormalizableInterface
      */
     function normalize(NormalizerInterface $normalizer, $format, $properties = null)
     {
-        $return = array(
+        return array(
             'name' => $this->name,
             'picture_url' => $this->picture_url,
             'description' => $this->description,
             'slug' => $this->slug,
         );
-        return $return;
     }
 
     /**
-     * @see \Symfony\Component\Serializer\Normalizer\NormalizableInterface
+     * @see
      */
     function denormalize(NormalizerInterface $normalizer, $data, $format = null)
     {
