@@ -29,25 +29,7 @@ class DefaultController extends Controller
         $query = $em->createQuery('select p from CleverAgeSymfponyBundle:Pony p');
         $ponies = $query->execute();
 
-        // create serializer
-        $serializer = new Serializer\Serializer();
-        $serializer->addNormalizer(new Serializer\Normalizer\CustomNormalizer());
-
-        if ('json' == $_format)
-        {
-            // add json encoder
-            $serializer->setEncoder('json', new Serializer\Encoder\JsonEncoder());
-        }
-        elseif ('xml' == $_format)
-        {
-            // add xml encoder
-            $xmlEncoder = new \CleverAge\SymfponyBundle\Serializer\Encoder\XmlEncoder();
-            $xmlEncoder->setRootNodeName('Ponies');
-            $xmlEncoder->setItemNodeName('Pony');
-            $serializer->setEncoder('xml', $xmlEncoder);
-        }
-
-        return new Response($serializer->encode($ponies, $_format));
+        return new Response($this->getSerializer($_format)->encode($ponies, $_format));
     }
 
     /**
@@ -59,12 +41,7 @@ class DefaultController extends Controller
      */
     public function showAction(Pony $pony, $_format)
     {
-        $serializer = new \Symfony\Component\Serializer\Serializer();
-        $serializer->addNormalizer(new \Symfony\Component\Serializer\Normalizer\CustomNormalizer());
-        $serializer->setEncoder('json', new \Symfony\Component\Serializer\Encoder\JsonEncoder());
-        $serializer->setEncoder('xml', new \Symfony\Component\Serializer\Encoder\XmlEncoder());
-
-        return new Response($serializer->encode($pony, $_format));
+        return new Response($this->getSerializer($_format)->encode($pony, $_format));
     }
 
     /**
@@ -85,5 +62,25 @@ class DefaultController extends Controller
         {
           die('todo');
         }
+    }
+
+    private function getSerializer($format)
+    {
+        // create serializer
+        $serializer = new Serializer\Serializer();
+        $serializer->addNormalizer(new Serializer\Normalizer\CustomNormalizer());
+
+        if ('json' == $format)
+        {
+            // add json encoder
+            $serializer->setEncoder('json', new Serializer\Encoder\JsonEncoder());
+        }
+        elseif ('xml' == $format)
+        {
+            // add xml encoder
+            $serializer->setEncoder('xml', new Serializer\Encoder\XmlEncoder());
+        }
+
+        return $serializer;
     }
 }
