@@ -4,6 +4,7 @@ imports:
 framework:
     router:   { resource: "%kernel.root_dir%/config/routing_dev.yml" }
     profiler: { only_exceptions: false }
+    templating: { engines: ['twig'] }
 
 web_profiler:
     toolbar: true

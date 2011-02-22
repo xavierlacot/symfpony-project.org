@@ -59,19 +59,12 @@ class DefaultController extends Controller
      */
     public function showAction(Pony $pony, $_format)
     {
-        if ($pony)
-        {
-          $serializer = new \Symfony\Component\Serializer\Serializer();
-          $serializer->addNormalizer(new \Symfony\Component\Serializer\Normalizer\CustomNormalizer());
-          $serializer->setEncoder('json', new \Symfony\Component\Serializer\Encoder\JsonEncoder());
-          $serializer->setEncoder('xml', new \Symfony\Component\Serializer\Encoder\XmlEncoder());
+        $serializer = new \Symfony\Component\Serializer\Serializer();
+        $serializer->addNormalizer(new \Symfony\Component\Serializer\Normalizer\CustomNormalizer());
+        $serializer->setEncoder('json', new \Symfony\Component\Serializer\Encoder\JsonEncoder());
+        $serializer->setEncoder('xml', new \Symfony\Component\Serializer\Encoder\XmlEncoder());
 
-          return new Response($serializer->encode($pony, $_format));
-        }
-        else
-        {
-          die('todo');
-        }
+        return new Response($serializer->encode($pony, $_format));
     }
 
     /**
