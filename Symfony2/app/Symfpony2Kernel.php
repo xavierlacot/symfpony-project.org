@@ -11,11 +11,9 @@ class Symfpony2Kernel extends Kernel
     {
         $bundles = array(
             new Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
-            new Symfony\Bundle\TwigBundle\TwigBundle(),
-
             // enable third-party bundles
             new Symfony\Bundle\ZendBundle\ZendBundle(),
-#            new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
+            //new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
             new Symfony\Bundle\DoctrineBundle\DoctrineBundle(),
             //new Symfony\Bundle\DoctrineMigrationsBundle\DoctrineMigrationsBundle(),
             //new Symfony\Bundle\DoctrineMongoDBBundle\DoctrineMongoDBBundle(),
@@ -29,6 +27,7 @@ class Symfpony2Kernel extends Kernel
 
         if ($this->isDebug()) {
             $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
+            $bundles[] = new Symfony\Bundle\TwigBundle\TwigBundle();
         }
 
         return $bundles;

@@ -4,6 +4,7 @@ namespace CleverAge\SymfponyBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Serializer;
 
 use CleverAge\SymfponyBundle\Entity\Pony;
 
@@ -29,13 +30,13 @@ class DefaultController extends Controller
         $ponies = $query->execute();
 
         // create serializer
-        $serializer = new \Symfony\Component\Serializer\Serializer();
-        $serializer->addNormalizer(new \Symfony\Component\Serializer\Normalizer\CustomNormalizer());
+        $serializer = new Serializer\Serializer();
+        $serializer->addNormalizer(new Serializer\Normalizer\CustomNormalizer());
 
         if ('json' == $_format)
         {
             // add json encoder
-            $serializer->setEncoder('json', new \Symfony\Component\Serializer\Encoder\JsonEncoder());
+            $serializer->setEncoder('json', new Serializer\Encoder\JsonEncoder());
         }
         elseif ('xml' == $_format)
         {
@@ -46,7 +47,7 @@ class DefaultController extends Controller
             $serializer->setEncoder('xml', $xmlEncoder);
         }
 
-        return new Response($serializer->encode($ponies, $_format), 200, array());
+        return new Response($serializer->encode($ponies, $_format));
     }
 
     /**
@@ -65,7 +66,7 @@ class DefaultController extends Controller
           $serializer->setEncoder('json', new \Symfony\Component\Serializer\Encoder\JsonEncoder());
           $serializer->setEncoder('xml', new \Symfony\Component\Serializer\Encoder\XmlEncoder());
 
-          return new Response($serializer->encode($pony, $_format), 200, array());
+          return new Response($serializer->encode($pony, $_format));
         }
         else
         {
@@ -73,6 +74,12 @@ class DefaultController extends Controller
         }
     }
 
+    /**
+     * The other way is to manualy fetch a Pony with a Request param, here it's the slug too.
+     * 
+     * @param string $slug
+     * @param string $_format
+     */
     public function deleteAction($slug, $_format)
     {
         $pony = $this->getRessource($slug);
