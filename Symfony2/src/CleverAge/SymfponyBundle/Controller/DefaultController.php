@@ -44,10 +44,13 @@ class DefaultController extends Controller
         $response->setMaxAge(120);
         $response->setETag(\md5(\serialize($pony))); // Should be a method in Pony
 
-        if ($response->isNotModified($request)) {
+        if ($response->isNotModified($request))
+        {
             // return the 304 Response immediately
             return $response;
-        } else {
+        } 
+        else
+        {
             $response->setContent( $this->getSerializer($_format)->encode($pony, $_format) );
             return $response;
         }
