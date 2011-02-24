@@ -41,7 +41,17 @@ class DefaultController extends Controller
      */
     public function showAction(Pony $pony, $_format)
     {
-        return new Response($this->getSerializer($_format)->encode($pony, $_format));
+        $response = new Response();
+
+        $response->setETag(md5($pony));
+
+        if ($response->isNotModified($request)) {
+            // return the 304 Response immediately
+            return $response;
+        } else {
+            $response->setContent( $this->getSerializer($_format)->encode($pony, $_format) );
+            return $response;
+        }
     }
 
     /**
