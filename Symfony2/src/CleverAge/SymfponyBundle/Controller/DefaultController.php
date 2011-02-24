@@ -42,8 +42,10 @@ class DefaultController extends Controller
     public function showAction(Pony $pony, $_format)
     {
         $response = new Response();
-
-        $response->setETag(md5($pony));
+        $request  = $this->get("request");
+        $response->setPublic();
+        $response->setMaxAge(120);
+        $response->setETag(\md5(\serialize($pony)));
 
         if ($response->isNotModified($request)) {
             // return the 304 Response immediately
