@@ -18,11 +18,6 @@ class DefaultController extends Controller
       return $this->get('doctrine.orm.entity_manager');
     }
 
-    private function getRessource($slug)
-    {
-      return $this->getEntityManager()->getRepository('CleverAgeSymfponyBundle:Pony')->findOneBySlug($slug);
-    }
-
     public function indexAction($_format)
     {
         $em = $this->getEntityManager();
@@ -43,9 +38,11 @@ class DefaultController extends Controller
     {
         $response = new Response();
         $request  = $this->get("request");
+        $request instanceof \Symfony\Component\HttpFoundation\Request;
+        $request;
         $response->setPublic();
         $response->setMaxAge(120);
-        $response->setETag(\md5(\serialize($pony)));
+        $response->setETag(\md5(\serialize($pony))); // Should be a method in Pony
 
         if ($response->isNotModified($request)) {
             // return the 304 Response immediately
@@ -64,15 +61,17 @@ class DefaultController extends Controller
      */
     public function deleteAction($slug, $_format)
     {
-        $pony = $this->getRessource($slug);
+        $pony = $this->getEntityManager()->getRepository('CleverAgeSymfponyBundle:Pony')->findOneBySlug($slug);
 
         if ($pony)
         {
-          die('todo');
+          $this->getEntityManager()->remove($pony);
+          $this->getEntityManager()->flush();
+          return new Response(null); // Send only 200 response.
         }
         else
         {
-          die('todo');
+          throw new \Symfony\Component\HttpKernel\Exception\NotFoundHttpException(); // Return a nice 404 response
         }
     }
 
