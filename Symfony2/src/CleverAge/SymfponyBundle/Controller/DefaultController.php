@@ -4,6 +4,7 @@ namespace CleverAge\SymfponyBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Serializer;
 
 use CleverAge\SymfponyBundle\Entity\Pony;
@@ -38,8 +39,7 @@ class DefaultController extends Controller
     {
         $response = new Response();
         $request  = $this->get("request");
-        $request instanceof \Symfony\Component\HttpFoundation\Request;
-        $request;
+        
         $response->setPublic();
         $response->setMaxAge(120);
         $response->setETag(\md5(\serialize($pony))); // Should be a method in Pony
@@ -71,7 +71,7 @@ class DefaultController extends Controller
         }
         else
         {
-          throw new \Symfony\Component\HttpKernel\Exception\NotFoundHttpException(); // Return a nice 404 response
+          throw new NotFoundHttpException(); // Return a nice 404 response
         }
     }
 
