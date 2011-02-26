@@ -4,7 +4,13 @@
 prod:
   .settings:
     no_script_name:         true
+    cache:                  false
+
+cache:
+  .settings:
+    no_script_name:         true
     cache:                  true
+
 dev:
   .settings:
     error_reporting:        <?php echo (E_ALL | E_STRICT)."\n" ?>

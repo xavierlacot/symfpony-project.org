@@ -51,7 +51,7 @@ class ponyActions extends sfActions
   {
     $format = $request->getRequestFormat();
     $this->getResponse()->setContentType( $request->getMimeType($format) );
-
+    
     try
     {
       $params = $this->validate($request->getGetParameters(), $this->getIndexValidators());

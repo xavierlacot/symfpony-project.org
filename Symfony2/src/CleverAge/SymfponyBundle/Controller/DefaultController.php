@@ -25,7 +25,11 @@ class DefaultController extends Controller
         $query = $em->createQuery('select p from CleverAgeSymfponyBundle:Pony p');
         $ponies = $query->execute();
 
-        return new Response($this->getSerializer($_format)->encode($ponies, $_format));
+        $response = new Response($this->getSerializer($_format)->encode($ponies, $_format));
+        $response->setPublic();
+        $response->setSharedMaxAge(120);
+
+        return $response;
     }
 
     /**
@@ -41,7 +45,7 @@ class DefaultController extends Controller
         $request  = $this->get("request");
         
         $response->setPublic();
-        $response->setMaxAge(120);
+        $response->setSharedMaxAge(120);
         $response->setETag(\md5(\serialize($pony))); // Should be a method in Pony
 
         if ($response->isNotModified($request))

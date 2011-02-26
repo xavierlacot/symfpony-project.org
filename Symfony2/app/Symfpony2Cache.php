@@ -2,12 +2,8 @@
 
 require_once __DIR__.'/Symfpony2Kernel.php';
 
-use Symfony\Bundle\FrameworkBundle\Cache\Cache;
+use Symfony\Bundle\FrameworkBundle\HttpCache\HttpCache;
 
-class Symfpony2Cache extends Cache
+class Symfpony2Cache extends HttpCache
 {
-    protected function getOptions()
-    {
-        return array();
-    }
 }
