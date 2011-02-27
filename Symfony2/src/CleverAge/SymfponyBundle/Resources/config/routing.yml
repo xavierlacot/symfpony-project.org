@@ -2,6 +2,11 @@ homepage:
     pattern:      /
     defaults:     { _controller: CleverAgeSymfponyBundle:Default:index, _format: xml }
 
+pony_create:
+    pattern:      /pony.{_format}
+    defaults:     { _controller: CleverAgeSymfponyBundle:Default:create, _format: xml }
+    requirements: { _format: (xml|json), _method: POST }
+
 pony_list:
     pattern:      /pony.{_format}
     defaults:     { _controller: CleverAgeSymfponyBundle:Default:index, _format: xml }
