@@ -16,29 +16,32 @@ class Pony implements NormalizableInterface
      * @orm:Id
      * @orm:GeneratedValue(strategy="IDENTITY")
      */
-    protected $id;
+    private $id;
 
     /**
      * @var string $name
      *
      * @gedmo:Sluggable
      * @orm:Column(name="name", type="string", length=110)
+     * @validation:NotBlank()
+     * @validation:MinLength(3)
      */
-    protected $name;
+    private $name;
 
     /**
      * @var string $picture_url
      *
      * @orm:Column(type="string", length="255")
+     * @validation:NotBlank()
      */
-    protected $picture_url;
+    private $picture_url;
 
     /**
      * @var string $description
      *
      * @orm:Column(type="text")
      */
-    protected $description;
+    private $description;
 
     /**
      * @var string $slug
@@ -46,7 +49,7 @@ class Pony implements NormalizableInterface
      * @gedmo:Slug
      * @orm:Column(name="slug", type="string", length=128, unique=true)
      */
-    protected $slug;
+    private $slug;
 
     /**
      * @see \Symfony\Component\Serializer\Normalizer\NormalizableInterface
@@ -66,9 +69,20 @@ class Pony implements NormalizableInterface
      */
     function denormalize(NormalizerInterface $normalizer, $data, $format = null)
     {
-        $this->setName($data['name']);
-        $this->setDescription($data['description']);
-        $this->setPictureUrl($data['picture_url']);
+        if (isset($data['name']))
+        {
+            $this->setName($data['name']);
+        }
+
+        if (isset($data['description']))
+        {
+            $this->setDescription($data['description']);
+        }
+
+        if (isset($data['picture_url']))
+        {
+            $this->setPictureUrl($data['picture_url']);
+        }
     }
 
 
@@ -84,7 +98,7 @@ class Pony implements NormalizableInterface
 
     /**
      * Set name
-     * 
+     *
      * @param string $name
      */
     public function setName($name)
