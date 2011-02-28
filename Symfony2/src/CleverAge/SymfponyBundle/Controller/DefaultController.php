@@ -14,7 +14,6 @@ class DefaultController extends Controller
     /**
      * Creates a new Pony
      *
-     * @param string $slug
      * @param string $_format
      */
     public function createAction($_format)
