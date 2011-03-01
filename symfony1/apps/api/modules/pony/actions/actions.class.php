@@ -14,6 +14,48 @@ class ponyActions extends sfActions
   public $model = 'Pony';
 
   /**
+   * Create a pony from a POST request
+   *
+   * @param sfWebRequest $request 
+   */
+  public function executeCreate(sfWebRequest $request)
+  {
+    $data     = $this->getPayload($request);
+    $format   = $request->getRequestFormat();
+    $response = $this->getResponse();
+
+    if (!empty($data))
+    {
+      $form = new PonyForm();
+
+      // Disable this protection
+      $form->disableLocalCSRFProtection();
+      unset($form[$form->getCSRFFieldName()]);
+
+      $form->bind($data);
+
+      if ($form->isValid())
+      {
+        $form->save(); // Persist a new Pony
+        $response->setStatusCode(201); // 201 = Created
+        // It's a good practice that to add the new ressource location in headers
+        $response->addHttpMeta('Location', $this->generateUrl('pony_show', array('slug' => $form->getObject()->slug, 'sf_format' => $format), true));
+      }
+      else
+      {
+        //var_dump($form->getErrorSchema()->getErrors());
+        $response->setStatusCode(406); // Invalid. We should provide debug info in the response body here.
+      }
+    }
+    else
+    {
+      $response->setStatusCode(400); // No payload, bad request
+    }
+
+    return sfView::NONE;
+  }
+
+  /**
    * Retrieve a single Pony from the collection
    *
    * @param sfWebRequest $request
@@ -146,5 +188,35 @@ class ponyActions extends sfActions
       }
     }
     return $clean_params;
+  }
+
+  protected function getPayload($request)
+  {
+    $payload = $request->getContent();
+    $format  = $request->getRequestFormat();
+    $data    = '';
+    
+    if (!empty($payload))
+    {
+      if ($format == 'json')
+      {
+        $data = (array) json_decode($payload);
+      }
+      elseif ($format == 'xml')
+      {
+        $parser = Doctrine_Parser::getParser($format);
+        $data = $parser->prepareData( simplexml_load_string($payload) );
+      }
+      elseif ($format == 'yml')
+      {
+        $data = sfYaml::load($payload);
+      }
+      else
+      {
+        throw new sfException("This format of pony isn't supported yet.");
+      }
+    }
+
+    return $data;
   }
 }

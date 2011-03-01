@@ -29,6 +29,8 @@ framework:
 
 doctrine:
     orm:
+        metadata_cache_driver: apc
+        query_cache_driver: apc
         default_entity_manager:   default
         auto_generate_proxy_classes: %kernel.debug%
         mappings:
