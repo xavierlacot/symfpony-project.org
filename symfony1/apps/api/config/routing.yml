@@ -6,6 +6,12 @@ homepage:
   url:   /
   param: { module: default, action: index }
 
+pony_create:
+  url: /pony.:sf_format
+  param: { module: pony, action: create, sf_format: xml }
+  class: sfRequestRoute
+  requirements: { sf_method: POST, sf_format: (xml|json|yml) }
+
 pony_list:
   url: /pony.:sf_format
   param: { module: pony, action: index, sf_format: xml }

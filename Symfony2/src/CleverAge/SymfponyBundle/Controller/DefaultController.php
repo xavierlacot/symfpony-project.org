@@ -54,8 +54,6 @@ class DefaultController extends Controller
 
         // something went wrong, cry
         $response = new Response('invalid pony!', 406);
-        $response->setPublic();
-        $response->setSharedMaxAge(120);
         return $response;
     }
 

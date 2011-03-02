@@ -57,10 +57,10 @@ class Pony implements NormalizableInterface
     function normalize(NormalizerInterface $normalizer, $format, $properties = null)
     {
         return array(
-            'name' => $this->name,
-            'picture_url' => $this->picture_url,
-            'description' => $this->description,
-            'slug' => $this->slug,
+            'name' => $this->getName(),
+            'picture_url' => $this->getPictureUrl(),
+            'description' => $this->getDescription(),
+            'slug' => $this->getSlug(),
         );
     }
 
