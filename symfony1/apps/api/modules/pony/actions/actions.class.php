@@ -20,7 +20,7 @@ class ponyActions extends sfActions
    */
   public function executeDelete(sfWebRequest $request)
   {
-    $pony   = $this->getRoute()->getObject();
+    $pony = $this->getRoute()->getObject();
     $format = $request->getRequestFormat();
     $this->getResponse()->setContentType( $request->getMimeType($format) );
 
@@ -51,7 +51,7 @@ class ponyActions extends sfActions
   {
     $format = $request->getRequestFormat();
     $this->getResponse()->setContentType( $request->getMimeType($format) );
-    
+
     try
     {
       $params = $this->validate($request->getGetParameters(), $this->getIndexValidators());
@@ -79,7 +79,7 @@ class ponyActions extends sfActions
    */
   public function executeShow(sfWebRequest $request)
   {
-    $pony   = $this->getRoute()->getObject();
+    $pony = $this->getRoute()->getObject();
     $format = $request->getRequestFormat();
 
     $this->getResponse()->setContentType( $request->getMimeType($format) );
