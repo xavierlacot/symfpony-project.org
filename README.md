@@ -2,7 +2,7 @@
 
 This repository contains the code of a REST-style webservice, developed using both symfony 1 and Symfony2. This work was carried out as part of the conference [Symfony Live 2011 Paris](http://www.symfony-live.com/paris).
 
-For more informations, please see [http://www.symfpony-project.org/](http://www.symfony-project.org/).
+For more informations, please see [http://www.symfpony-project.org/](http://www.symfpony-project.org/).
 
 # OMG ASCII PONY !
 
